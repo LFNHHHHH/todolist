@@ -2,8 +2,8 @@
   <div id="root">
     <div class="todo-container">
       <div class="todo-wrap">
-        <MyHeader />
-        <MyList />
+        <MyHeader :addTodo="addTodo" />
+        <MyList :todos="todos" />
         <MyFooter />
       </div>
     </div>
@@ -19,9 +19,19 @@ export default {
   name: "App",
   components: { MyHeader, MyList, MyFooter },
   data() {
-    return {};
+    return {
+      todos: [
+        { id: "001", title: "抽烟", done: true },
+        { id: "002", title: "喝酒", done: false },
+        { id: "003", title: "烫头", done: false },
+      ],
+    };
   },
-  methods: {},
+  methods: {
+    addTodo(todo) { // 获取子组件数据
+      this.todos.unshift(todo)
+    }
+  },
 };
 </script>
 

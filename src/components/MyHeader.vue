@@ -1,6 +1,6 @@
 <template>
   <div class="todo-header">
-    <input type="text" placeholder="请输入你的任务名称，按回车键确认" />
+    <input type="text" placeholder="请输入你的任务名称，按回车键确认" v-model.trim="title" @keyup.enter="add" />
   </div>
 </template>
 
@@ -8,9 +8,23 @@
 export default {
   name: "MyHeader",
   data() {
-    return {};
+    return {
+        title: ''
+    };
   },
-  methods: {},
+  props: ['addTodo'],
+  methods: {
+    add() { // 添加任务
+        if (!this.title) {
+            return alert('任务名称不能为空!')
+        }
+
+        let item = {id: Date.now(), title: this.title, done: false}
+        // 把数据传给 父组件
+        this.addTodo(item)
+        this.title = ''
+    }
+  },
 };
 </script>
 
