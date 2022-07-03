@@ -4,17 +4,21 @@
       <input type="checkbox" :checked='todo.done' @click="setChange(todo.id)" />
       <span>{{ todo.title }}</span>
     </label>
-    <button class="btn btn-danger">删除</button>
+    <button @click="delItem(todo.id)" class="btn btn-danger">删除</button>
   </li>
 </template>
 
 <script>
 export default {
   name: "MyItem",
-  props: ['todo', 'changeCheck'],
+  props: ['todo', 'changeCheck', 'delI'],
   methods: {
     setChange (id) {
       this.changeCheck(id)
+    },
+    delItem (id) {
+      if (!confirm('确定删除吗？')) return
+      this.delI(id)
     }
   },
 };
