@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader :addTodo="addTodo" />
-        <MyList :todos="todos" />
+        <MyList :todos="todos" :changeCheck="changeCheck" />
         <MyFooter />
       </div>
     </div>
@@ -28,8 +28,13 @@ export default {
     };
   },
   methods: {
-    addTodo(todo) { // 获取子组件数据
+    addTodo (todo) { // 获取子组件数据
       this.todos.unshift(todo)
+    },
+    changeCheck (id) {
+      this.todos.forEach(item => {
+        if (item.id == id) item.done = !item.done
+      })
     }
   },
 };

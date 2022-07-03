@@ -1,7 +1,7 @@
 <template>
   <li>
     <label>
-      <input type="checkbox" :checked='todo.done' />
+      <input type="checkbox" :checked='todo.done' @click="setChange(todo.id)" />
       <span>{{ todo.title }}</span>
     </label>
     <button class="btn btn-danger">删除</button>
@@ -11,8 +11,12 @@
 <script>
 export default {
   name: "MyItem",
-  props: ['todo'],
-  methods: {},
+  props: ['todo', 'changeCheck'],
+  methods: {
+    setChange (id) {
+      this.changeCheck(id)
+    }
+  },
 };
 </script>
 
