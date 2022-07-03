@@ -1,10 +1,10 @@
 <template>
-  <li>
+  <li @click="setChange(todo.id)">
     <label>
       <input type="checkbox" :checked='todo.done' @click="setChange(todo.id)" />
       <span>{{ todo.title }}</span>
     </label>
-    <button @click="delItem(todo.id)" class="btn btn-danger">删除</button>
+    <button @click.stop="delItem(todo.id)" class="btn btn-danger">删除</button>
   </li>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <ul class="todo-main">
+  <ul v-if="todos.length > 0" class="todo-main">
     <MyItem 
       v-for="todoObj in todos" 
       :key="todoObj.id" 

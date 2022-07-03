@@ -4,7 +4,7 @@
       <div class="todo-wrap">
         <MyHeader :addTodo="addTodo" />
         <MyList :todos="todos" :changeCheck="changeCheck" :delI="delI" />
-        <MyFooter />
+        <MyFooter :todos="todos" :changeAll="changeAll" :clearD="clearD" />
       </div>
     </div>
   </div>
@@ -39,6 +39,14 @@ export default {
     delI (id) {
       let index = this.todos.findIndex(item => item.id == id)
       this.todos.splice(index, 1)
+    },
+    changeAll (checked) {
+      this.todos.forEach(item => {
+        item.done = checked
+      })
+    },
+    clearD () {
+      this.todos = this.todos.filter (item => !item.done)
     }
   },
 };
