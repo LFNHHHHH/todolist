@@ -20,12 +20,16 @@ export default {
   components: { MyHeader, MyList, MyFooter },
   data() {
     return {
-      todos: [
-        { id: "001", title: "抽烟", done: true },
-        { id: "002", title: "喝酒", done: false },
-        { id: "003", title: "烫头", done: false },
-      ],
+      todos: JSON.parse(localStorage.getItem('todos')) || [],
     };
+  },
+  watch: {
+    todos: {
+      deep: true,
+      handler (val) {
+        localStorage.setItem('todos', JSON.stringify(val))
+      }
+    }
   },
   methods: {
     addTodo (todo) { // 获取子组件数据
