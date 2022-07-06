@@ -17,7 +17,6 @@ export default {
         title: ''
     };
   },
-  props: ['addTodo'],
   methods: {
     add() { // 添加任务
         if (!this.title) {
@@ -26,7 +25,8 @@ export default {
 
         let item = {id: Date.now(), title: this.title, done: false}
         // 把数据传给 父组件
-        this.addTodo(item)
+        // this.addTodo(item)
+        this.$emit('addTodo', item)
         this.title = ''
     }
   },

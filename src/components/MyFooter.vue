@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "MyFooter",
-  props: ['todos', 'changeAll', 'clearD'],
+  props: ['todos'],
   computed: {
     checkedNum () {
       let list = this.todos.filter(item => item.done)
@@ -22,21 +22,16 @@ export default {
         return this.checkedNum == this.todos.length && this.todos.length > 0
       },
       set (val) {
-        this.changeAll(val)
+        // this.changeAll(val)
+        this.$emit('changeAll', val)
       }
     }
   },
   methods: {  
     clearDown () {
-      this.clearD()
+      // this.clearD()
+      this.$emit('clearD')
     },
-    changeCheck (e) {
-      if (e.target.checked) {
-        this.checkAll()
-      } else {
-        this.clearAll()
-      }
-    }
   }
 };
 </script>

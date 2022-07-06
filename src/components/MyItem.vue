@@ -11,14 +11,16 @@
 <script>
 export default {
   name: "MyItem",
-  props: ['todo', 'changeCheck', 'delI'],
+  props: ['todo'],
   methods: {
     setChange (id) {
-      this.changeCheck(id)
+      // this.changeCheck(id)
+      this.$emit('changeCheck', id)
     },
     delItem (id) {
       if (!confirm('确定删除吗？')) return
-      this.delI(id)
+      // this.delI(id)
+      this.$emit('delI', id)
     }
   },
 };

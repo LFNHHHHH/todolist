@@ -4,8 +4,8 @@
       v-for="todoObj in todos" 
       :key="todoObj.id" 
       :todo="todoObj" 
-      :changeCheck="changeCheck"  
-      :delI="delI"
+      @changeCheck="changeCheck"  
+      @delI="delI"
     />
   </ul>
 </template>
@@ -16,7 +16,15 @@ import MyItem from "./MyItem";
 export default {
   name: "MyList",
   components: { MyItem },
-  props: ['todos', 'changeCheck', 'delI']
+  props: ['todos'],
+  methods: {
+    changeCheck (id) {
+      this.$emit("changeCheck", id)
+    },
+    delI (id) {
+      this.$emit('delI', id)
+    }
+  }
 };
 </script>
 
