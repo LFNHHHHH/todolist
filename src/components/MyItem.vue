@@ -14,13 +14,13 @@ export default {
   props: ['todo'],
   methods: {
     setChange (id) {
-      // this.changeCheck(id)
-      this.$emit('changeCheck', id)
+      // console.log(this.$bus.$emit)
+      this.$bus.$emit('changeCheck', id)
     },
     delItem (id) {
       if (!confirm('确定删除吗？')) return
-      // this.delI(id)
-      this.$emit('delI', id)
+      // this.$emit('delI', id)
+      this.$bus.$emit('delI', id)
     }
   },
 };

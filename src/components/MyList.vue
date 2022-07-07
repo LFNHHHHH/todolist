@@ -3,9 +3,7 @@
     <MyItem 
       v-for="todoObj in todos" 
       :key="todoObj.id" 
-      :todo="todoObj" 
-      @changeCheck="changeCheck"  
-      @delI="delI"
+      :todo="todoObj"
     />
   </ul>
 </template>
@@ -16,15 +14,7 @@ import MyItem from "./MyItem";
 export default {
   name: "MyList",
   components: { MyItem },
-  props: ['todos'],
-  methods: {
-    changeCheck (id) {
-      this.$emit("changeCheck", id)
-    },
-    delI (id) {
-      this.$emit('delI', id)
-    }
-  }
+  props: ['todos']
 };
 </script>
 
